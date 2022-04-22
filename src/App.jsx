@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
  
 import Start from './components/Start';
 import Questions from './components/Questions';
-import Result from './components/Results';
 import Results from './components/Results';
  
  
