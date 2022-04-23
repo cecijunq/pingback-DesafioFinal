@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Results from './Results';
  
 class Questions extends Component {
     state = {
         questions: [], //para cada item do array, qro renderizar um item no html
+        result: {},
         score: 0
     };
     //map em questions: terá acesso ao que há em cada objeto em cada loop/repetição
@@ -11,7 +13,9 @@ class Questions extends Component {
     componentDidMount() {
         axios
             .get("https://opentdb.com/api.php?amount=10&type=boolean")
-            .then(({data}) => this.setState({questions: data.results}))
+            .then(({data}) => {
+                this.setState({questions: data.results, result: data.results[0]})
+            })
             .catch((error) => console.log("cai no erro"));
  
         // fetch(
@@ -29,11 +33,17 @@ class Questions extends Component {
             score++;
         }
     }
+
+
+    handleNextQuestion() {
+        this.setState({result: result + 1})
+    }
  
     render() {
         return (
             <>
                 <h2>Questions</h2>
+
                
                 {this.state.questions.map((question, index) => (
                     <div key={index}>
@@ -48,13 +58,6 @@ class Questions extends Component {
                                 )
                             )}                            
                            
-                            {/* <ul>
-                                {[...question.incorrect_answers, question.correct_answer].map(
-                                    (answer) => (
-                                        <li key={answer}>{answer}</li>
-                                    )
-                                )}
-                            </ul> */}
                         </div>
                     </div>
                 ))}

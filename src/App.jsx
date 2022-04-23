@@ -14,9 +14,9 @@ class App extends Component {
       <>
  
         <Router>
+          <Route path="/start" component={Start}/>
           <Route path="/questions" component={Questions}/>
           <Route path="/results" component={Results}/>
-          <Route path="/start" component={Start}/>
         </Router>
       </>
  

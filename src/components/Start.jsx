@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 class Start extends Component {
     state = {  }
  
+    handleChangingPage = () => {
+        console.log("changing the website page");
+        this.props.history.push('/questions');
+    }
  
     render() {
         return (
@@ -15,7 +19,7 @@ class Start extends Component {
  
                 <p>When you are ready, click on the button below</p>
  
-                <button>START</button>
+                <button onClick={this.handleChangingPage}>START</button>
             </>
         );
     }
