@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Results from './Results';
+import Question from './Question';
  
 class Questions extends Component {
     state = {
         questions: [], //para cada item do array, qro renderizar um item no html
-        result: {},
+        question: {}, //é a pergunta atual
         score: 0
     };
     //map em questions: terá acesso ao que há em cada objeto em cada loop/repetição
@@ -14,7 +15,7 @@ class Questions extends Component {
         axios
             .get("https://opentdb.com/api.php?amount=10&type=boolean")
             .then(({data}) => {
-                this.setState({questions: data.results, result: data.results[0]})
+                this.setState({questions: data.results, question: data.results[0]})
             })
             .catch((error) => console.log("cai no erro"));
  
@@ -27,16 +28,15 @@ class Questions extends Component {
         //     .catch((error) => console.log("cai no erro"));
     }
  
-    handleAnswerChosen() {
-        if(button.question.correct_answer){
-            let score = this.state.score;
-            score++;
+    handleAnswerChosen(answer, correct_answer) {
+        if(answer === answer.correct_answer){
+            this.setState({score: this.state.score++});
         }
     }
 
 
     handleNextQuestion() {
-        this.setState({result: result + 1})
+        this.setState({result: question + 1})
     }
  
     render() {
@@ -44,24 +44,26 @@ class Questions extends Component {
             <>
                 <h2>Questions</h2>
 
+                {/* <Question question={this.state.question} /> */}
+
                
-                {this.state.questions.map((question, index) => (
+                {this.state.questions.map((result, index) => (
                     <div key={index}>
-                        <span className="question">{question.question}</span>
-                        <p className="difficulty">{question.difficulty}</p>
+                        <span className="result">{result.question}</span>
+                        <p className="difficulty">{result.difficulty}</p>
  
                         <div className="answers">
- 
-                            {[...question.incorrect_answers, question.correct_answer].map(
+                            {[...result.incorrect_answers, result.correct_answer].map(
                                 (answer) => (
-                                    <button key={answer}>{answer}</button>
+                                    <button onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
                                 )
                             )}                            
                            
                         </div>
                     </div>
+
                 ))}
- 
+
                 <h3>Score: {this.state.score}</h3>
             </>
  
