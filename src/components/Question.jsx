@@ -3,24 +3,26 @@ import Questions from './Questions';
 
 class Question extends Component {
     
-    render() { 
+    render() {
+        const { question } = this.props;
+        console.log(question); 
         return (
-            {this:state.questions.map((result, index) => (
-                <div key={index}>
-                    <span className="result">{result.question}</span>
-                    <p className="difficulty">{result.difficulty}</p>
+            
+            <div>
+                <span className="result">{question.question}</span>
+                <p className="difficulty">{question.difficulty}</p>
 
-                    <div className="answers">
-                        {[...result.incorrect_answers, result.correct_answer].map(
-                            (answer) => (
-                                <button onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
-                            )
-                        )}                            
+                <div className="answers">
+                    {[...question.incorrect_answers, question.correct_answer].map(
+                        (answer) => (
+                            <button onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
+                        )
+                    )}                            
                        
-                    </div>
                 </div>
+            </div>
 
-            ))}
+            
         );
     }
 }

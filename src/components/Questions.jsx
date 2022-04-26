@@ -15,10 +15,11 @@ class Questions extends Component {
         axios
             .get("https://opentdb.com/api.php?amount=10&type=boolean")
             .then(({data}) => {
+                console.log("results", data);
                 this.setState({questions: data.results, question: data.results[0]})
             })
             .catch((error) => console.log("cai no erro"));
- 
+
         // fetch(
         //     "https://opentdb.com/api.php?amount=10&type=boolean")
         //     .then((response) => response.json())
@@ -44,25 +45,9 @@ class Questions extends Component {
             <>
                 <h2>Questions</h2>
 
-                {/* <Question question={this.state.question} /> */}
+                {console.log("Object.keys", Object.keys(this.state.question))}
 
-               
-                {this.state.questions.map((result, index) => (
-                    <div key={index}>
-                        <span className="result">{result.question}</span>
-                        <p className="difficulty">{result.difficulty}</p>
- 
-                        <div className="answers">
-                            {[...result.incorrect_answers, result.correct_answer].map(
-                                (answer) => (
-                                    <button onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
-                                )
-                            )}                            
-                           
-                        </div>
-                    </div>
-
-                ))}
+                { Object.keys(this.state.question).length && <Question question={this.state.question} /> }
 
                 <h3>Score: {this.state.score}</h3>
             </>
