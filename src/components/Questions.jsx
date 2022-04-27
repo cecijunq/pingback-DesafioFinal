@@ -5,7 +5,7 @@ import Question from './Question';
  
 class Questions extends Component {
     state = {
-        questions: [], //para cada item do array, qro renderizar um item no html
+        questions: [], //para cada item do array, quero renderizar um item no html
         question: {}, //é a pergunta atual
         score: 0
     };
@@ -29,11 +29,11 @@ class Questions extends Component {
         //     .catch((error) => console.log("cai no erro"));
     }
  
-    // handleAnswerChosen(answer, correct_answer) {
-    //     if(answer === answer.correct_answer){
-    //         this.setState({score: this.state.score++});
-    //     }
-    // }
+
+    handleNextQuestion = () => {
+        const { question } = this.props;
+        this.setState({ question: question + 1});
+    }
 
 
  
@@ -45,6 +45,8 @@ class Questions extends Component {
                 {console.log("Object.keys", Object.keys(this.state.question))}
 
                 { Object.keys(this.state.question).length && <Question question={this.state.question} /> }
+
+                <button onClick={this.handleNextQuestion}>Next question</button>
 
                 <h3>Score: {this.state.score}</h3>
 
