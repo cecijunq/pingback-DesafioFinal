@@ -29,16 +29,13 @@ class Questions extends Component {
         //     .catch((error) => console.log("cai no erro"));
     }
  
-    handleAnswerChosen(answer, correct_answer) {
-        if(answer === answer.correct_answer){
-            this.setState({score: this.state.score++});
-        }
-    }
+    // handleAnswerChosen(answer, correct_answer) {
+    //     if(answer === answer.correct_answer){
+    //         this.setState({score: this.state.score++});
+    //     }
+    // }
 
 
-    handleNextQuestion() {
-        this.setState({result: question + 1})
-    }
  
     render() {
         return (
@@ -50,6 +47,7 @@ class Questions extends Component {
                 { Object.keys(this.state.question).length && <Question question={this.state.question} /> }
 
                 <h3>Score: {this.state.score}</h3>
+
             </>
  
         );

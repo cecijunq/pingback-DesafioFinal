@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import Questions from './Questions';
 
 class Question extends Component {
-    
+    handleAnswerChosen(answer, correct_answer) {
+        if(answer === answer.correct_answer){
+            this.setState({score: this.state.score++});
+        }
+    }
+
+    handleNextQuestion() {
+        console.log("going to the next question");
+        this.props.history.push(this.setState(this.state.question++));
+    }
+
     render() {
         const { question } = this.props;
         console.log(question); 
@@ -20,9 +30,11 @@ class Question extends Component {
                     )}                            
                        
                 </div>
+
+                <button onClick={this.handleNextQuestion}>Next question</button>
+
             </div>
 
-            
         );
     }
 }
