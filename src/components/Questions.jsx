@@ -28,11 +28,10 @@ class Questions extends Component {
         //     //fala que questions será igual ao array results (terá os mesmos valores)
         //     .catch((error) => console.log("cai no erro"));
     }
- 
 
     handleNextQuestion = () => {
         const { question } = this.props;
-        this.setState({ question: question + 1});
+        this.setState({ question: question + 1 });
     }
 
 
