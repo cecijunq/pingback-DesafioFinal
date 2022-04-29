@@ -16,7 +16,7 @@ class Questions extends Component {
             .get("https://opentdb.com/api.php?amount=10&type=boolean")
             .then(({data}) => {
                 console.log("results", data);
-                this.setState({questions: data.results, question: data.results[0]})
+                this.setState({ questions: data.results, question: data.results[0], score: 0 })
             })
             .catch((error) => console.log("cai no erro"));
 
@@ -30,11 +30,11 @@ class Questions extends Component {
     }
 
     handleNextQuestion = () => {
+        console.log("moving to the next question");
         const { question } = this.props;
         this.setState({ question: question + 1 });
     }
-
-
+    
  
     render() {
         return (
