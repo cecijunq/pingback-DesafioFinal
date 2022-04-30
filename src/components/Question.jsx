@@ -5,12 +5,11 @@ class Question extends Component {
     
     handleAnswerChosen = (answer, correct_answer) => {
         console.log("i chose an alternative");
-        if(answer === answer.correct_answer){
+        if(answer === correct_answer){
             this.setState({ score: this.state.score + 1 });
         }
     }
     
-
 
     render() {
         const { question } = this.props;

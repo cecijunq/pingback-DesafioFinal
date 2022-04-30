@@ -7,7 +7,7 @@ class Questions extends Component {
     state = {
         questions: [], //para cada item do array, quero renderizar um item no html
         question: {}, //é a pergunta atual
-        score: 0
+        score: 0,
     };
     //map em questions: terá acesso ao que há em cada objeto em cada loop/repetição
  
@@ -32,6 +32,7 @@ class Questions extends Component {
     handleNextQuestion = () => {
         console.log("moving to the next question");
         const { question } = this.props;
+        
         this.setState({ question: question + 1 });
     }
     
