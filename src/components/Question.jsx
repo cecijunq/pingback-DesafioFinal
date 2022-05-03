@@ -11,7 +11,7 @@ class Question extends Component {
     }
     
 
-    render() {
+    render(index) {
         const { question } = this.props;
         
         console.log(question); 
