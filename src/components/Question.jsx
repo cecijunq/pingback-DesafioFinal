@@ -2,14 +2,29 @@ import React, { Component } from 'react';
 import Questions from './Questions';
 
 class Question extends Component {
-    
-    handleAnswerChosen = (answer, correct_answer) => {
-        console.log("i chose an alternative");
-        if(answer === correct_answer){
-            this.setState({ score: this.state.score + 1 });
-        }
+    state = {
+        correct_answer: [],
+        answer: [],
+        questionScore: 0
     }
     
+    // handleAnswerChosen = (answer, correct_answer) => {
+    //     console.log("i chose an alternative");
+    //     if(answer === correct_answer){
+    //         this.setState({ score: this.state.score + 1 });
+    //     }
+    // }
+    handleAnswerChosen = () => {
+        console.log("i chose an alternative");
+        const { score } = this.props;
+        const { correct_answer, answer } = this.state;
+
+        if(answer == correct_answer){
+            this.setState({ score: score[questionScore = 1],
+            questionScore: questionScore = 1 });
+            // this.setState({ score: this.state.score + 1 });
+        }
+    }
 
     render(index) {
         const { question } = this.props;

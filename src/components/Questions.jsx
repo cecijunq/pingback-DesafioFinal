@@ -9,6 +9,7 @@ class Questions extends Component {
         question: {}, //é a pergunta atual
         questionIndex: 0,
         score: 0,
+        questionNumber: 1,
     };
     //map em questions: terá acesso ao que há em cada objeto em cada loop/repetição
  
@@ -36,13 +37,18 @@ class Questions extends Component {
         
         console.log(questionIndex + 1);
         this.setState({ question: questions[questionIndex + 1], questionIndex: questionIndex + 1 });
+
+        if(questionIndex == 9){
+            console.log("changing to results page");
+            this.props.history.push('/results');
+        }
     }
     
  
     render() {
         return (
             <>
-                <h2>Questions</h2>
+                <h2>Question: </h2>
 
                 {console.log("Object.keys", Object.keys(this.state.question))}
 
