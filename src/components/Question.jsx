@@ -32,14 +32,14 @@ class Question extends Component {
         console.log(question); 
         return (
             
-            <div>
+            <div className='teste'>
                 <span className="result">{question.question}</span>
                 <p className="difficulty">{question.difficulty}</p>
 
                 <div className="answers">
                     {[...question.incorrect_answers, question.correct_answer].map(
                         (answer) => (
-                            <button onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
+                            <button className='btn_ans' onClick={this.handleAnswerChosen} key={answer}>{answer}</button>
                         )
                     )}                            
                        

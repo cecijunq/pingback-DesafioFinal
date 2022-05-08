@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Results from './Results';
 import Question from './Question';
+
+import '../styles/styles.scss';
  
 class Questions extends Component {
     state = {
